@@ -1,0 +1,238 @@
+//navigation top
+import 'package:flutter/material.dart';
+void main() {
+runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+return MaterialApp(
+debugShowCheckedModeBanner: false,
+home: MyStatefulWidget(),
+);
+}
+}
+class MyStatefulWidget extends StatefulWidget {
+MyStatefulWidget({Key? key}) : super(key: key);
+@override
+_MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+title: const Text('This is Flutter Navigation'),
+backgroundColor: Color.fromARGB(255, 124, 115, 203),
+),
+drawer: Drawer(
+elevation: 20.0,
+backgroundColor: Color.fromARGB(255, 124, 115, 203),
+child: Container(
+color: Color.fromARGB(255, 212, 210, 229),
+child: Column(children: <Widget>[
+const UserAccountsDrawerHeader(
+decoration:
+BoxDecoration(color: Color.fromARGB(255, 124, 115, 203)),
+accountName: Text("Abel Tesfaye"),
+accountEmail: Text("abelt@gmail.com"),
+currentAccountPicture: CircleAvatar(
+backgroundImage: NetworkImage(
+"https://www.earnthenecklace.com/wp-content/uploads/2016/11/I-FeelIt-Coming-by-The-Weeknd-300x300.jpg"),
+radius: 30,
+backgroundColor: Color.fromARGB(255, 15, 15, 14),
+),
+),
+ListTile(
+title: const Text("Track/Order"),
+leading: const Icon(Icons.mail),
+onTap: () {
+Navigator.pop(context);
+Navigator.push(
+context,
+MaterialPageRoute(builder: (context) => Mailpage()),
+);
+},
+),
+const Divider(
+height: 0.1,
+),
+ListTile(
+title: const Text("Tour"),
+leading: const Icon(Icons.inbox),
+onTap: () {
+Navigator.pop(context);
+Navigator.push(
+context,
+MaterialPageRoute(builder: (context) => Primarypage()),
+);
+},
+),
+ListTile(
+title: const Text("News"),
+leading: const Icon(Icons.people),
+onTap: () {
+Navigator.pop(context);
+Navigator.push(
+context,
+MaterialPageRoute(builder: (context) => Primarypage()),
+);
+},
+),
+ListTile(
+title: const Text("Videos"),
+leading: const Icon(Icons.local_offer),
+onTap: () {
+Navigator.pop(context);
+Navigator.push(
+context,
+MaterialPageRoute(builder: (context) => Primarypage()),
+);
+},
+),
+]),
+),
+));
+}
+}
+class Mailpage extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+title: Text("Mail Box"),
+),
+body: Center(
+child: ElevatedButton(
+style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
+onPressed: () {
+Navigator.pop(context);
+},
+child: Text('Mail Box'))),
+);
+}
+}
+class Primarypage extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+title: Text("Primary Screen"),
+),
+body: Center(
+child: ElevatedButton(
+style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
+onPressed: () {
+Navigator.pop(context);
+},
+child: Text('Primary Screen'))),
+);
+}
+}
+
+
+//navigation bottom
+child: ElevatedButton(
+style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
+onPressed: () {
+Navigator.pop(context);
+},
+child: Text('Mail Box'))),
+);
+}
+}
+class Primarypage extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+title: Text("Primary Screen"),
+),
+body: Center(
+child: ElevatedButton(
+style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
+onPressed: () {
+Navigator.pop(context);
+},
+child: Text('Primary Screen'))),
+);
+}
+}
+debugShowCheckedModeBanner: false,
+home: MyStatefulWidget(),
+);
+}
+}
+class MyStatefulWidget extends StatefulWidget {
+const MyStatefulWidget({super.key});
+@override
+State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+int _count = 0;
+int _selectedindex = 0;
+static const List<Widget> _widgetOptions = <Widget>[
+Text(
+'Home Page',
+style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+),
+Text(
+'Search Page',
+style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+),
+Text(
+'Profile Page',
+style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+),
+];
+void _onItemTapped(int index) {
+setState(() {
+_selectedindex = index;
+});
+}
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+backgroundColor: Color.fromARGB(255, 124, 115, 203),
+title: const Text('Flutter Navigation Drawer Example'),
+),
+body: Center(
+child: _widgetOptions.elementAt(_selectedindex),
+),
+bottomNavigationBar: BottomNavigationBar(
+items: const <BottomNavigationBarItem>[
+BottomNavigationBarItem(
+icon: Icon(Icons.home),
+label: 'Home',
+backgroundColor: Color.fromARGB(255, 124, 115, 203),
+),
+BottomNavigationBarItem(
+icon: Icon(Icons.search),
+label: 'Search',
+backgroundColor:Color.fromARGB(255, 124, 115, 203),
+),
+BottomNavigationBarItem(
+icon: Icon(Icons.person),
+label: 'Profile',
+backgroundColor: Color.fromARGB(255, 124, 115, 203),
+),
+],
+type: BottomNavigationBarType.shifting,
+currentIndex: _selectedindex,
+selectedItemColor: Colors.black,
+iconSize: 40,
+onTap: _onItemTapped,
+elevation: 5,
+),
+floatingActionButton: FloatingActionButton(
+backgroundColor: Color.fromARGB(255, 124, 115, 203),
+onPressed: () => setState(() {
+_count++;
+}),
+tooltip: 'Increment Counter',
+child: const Icon(Icons.add), 
+),
+floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+);
+}
+}
