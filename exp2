@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'package:meta/dart2js.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'My flutter App',
+      theme: ThemeData(primarySwatch: Colors.grey),
+      home: Scaffold(
+        backgroundColor: Color.fromARGB(255, 174, 183, 189),
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 0, 86, 144),
+          title: new Text('Flutter Demo App'),
+          centerTitle: true,
+          toolbarOpacity: 0.5,
+          elevation: 18,
+          leading: new Icon(Icons.menu),
+          actions: <Widget>[
+            new IconButton(
+                onPressed: () {
+                  print('the close button is been pressed');
+                },
+                icon: new Icon(Icons.close)),
+            new IconButton(
+                onPressed: () {
+                  print('the call button is been pressed');
+                },
+                icon: new Icon(Icons.call))
+          ],
+        ),
+        body: Center(
+            child: new Text(
+          "Hello World!!",
+          overflow: TextOverflow.fade,
+          style: TextStyle(
+              fontStyle: FontStyle.italic,
+              letterSpacing: 5.0,
+              wordSpacing: 3,
+              fontSize: 40,
+              shadows: [
+                Shadow(
+// color: Color.fromARGB(255, 145, 168, 207),
+                    offset: Offset(2, 1),
+                    blurRadius: 10)
+              ]),
+          textScaleFactor: 1.5,
+// overflow: TextOverflow.ellipsis,
+          textDirection: TextDirection.rtl,
+        )),
+      ),
+    );
+  }
+}
